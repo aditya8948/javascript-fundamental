@@ -24,7 +24,7 @@ const userProfile = [
 ]
 
 
-
+   
 
 
 for(let i = 0 ; i < userProfile.length; i++)
