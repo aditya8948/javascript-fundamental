@@ -59,3 +59,15 @@ const addNum = (a, b) => {
 console.log(addNum(4, 6)); // Output: 46
 
 */
+
+// !function call other function
+
+// function add(a, b) {
+//     return a + b;
+// }
+
+// function calculateSum(x, y) {
+//     return add(x, y); // calling another function
+// }
+
+// console.log(calculateSum(5, 3)); // Output: 8
