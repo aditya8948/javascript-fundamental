@@ -318,3 +318,115 @@ o/p => ReferenceError: Cannot access 'b' before initialization
       Arrow → parent scope’s this
 
 
+
+-------------------------------------------------------------------------------------------------------------------------
+
+memory management => js manage memmory autoomatically
+
+
+  there  are two main memory  areas (stack and heap )
+
+  - stack memory => it stores 
+      - primitive valuse 
+      - function execution context  
+      - reference (address)
+  
+  - heap memory => it stores 
+    -object 
+    - array 
+    -function
+
+
+  -- primitive 
+Number
+String
+Boolean
+Undefined
+Null
+Symbol
+BigInt
+(they  directly store in stack )
+
+-- object 
+Object
+Array
+Function
+(they stored in heap , variable stores reference )
+
+
+
+--------------------------------------------------------------------------
+
+shallow copy and deep  copy 
+
+Shallow copy => new object , but nested object are still shared (onyl the first  leve;  is copied )
+
+example => 
+
+const user1 = {
+  name: "A",
+  address: {
+    city: "Delhi"
+  }
+};
+
+const user2 = { ...user1 };
+
+user2.name = "B";
+user2.address.city = "Mumbai";
+
+console.log(user1.name);         // A
+console.log(user1.address.city); // Mumbai ❗ //address → object → reference copied
+
+
+- WAYS TO  CREATE SHALLOW COPY 
+ { ...obj }
+Object.assign({}, obj)
+Array.slice()
+Array.from()
+
+
+ - Deep copy = > completly new objecct , including neste object (no shared reference )
+  example => 
+    const user2 = JSON.parse(JSON.stringify(user1));
+user2.address.city = "Mumbai";
+
+console.log(user1.address.city); // Delhi ✅
+
+- limitation of JSON method  => losses date , map , set , remove function 
+
+- best modern way (structured clone ) => 
+    const  deep = structuredClone(user1);
+
+✔️ Handles:
+
+nested objects
+arrays
+dates
+circular refs
+
+
+--------------------------------------------------------------------------------------------------------------------------
+ Garbage collection => it is how js automatically freees memory that is no longger needed . we  dont delete it manually js automatically delete it 
+ - gc fress heap memory not stack memory - it freed automatically when function execution end or functionn executiion is popped 
+
+
+- GC uses mark and sweep algorithm 
+ - a value is reachable if it can accessed from global scope or from current runnig scope function or
+  from other reachable object
+   
+  1- mark all reachable object 
+  2- sweep everything unnmarked 
+
+  - real world memory leak => GC is  automatic but  bad code can prevent gc
+   - when object  are no longer needed arre incorrectly still reachable and therefore not being garbage collected 
+
+  - forgotten references 
+  - global variable (global stays reachable forever )
+  - event listener not remove  
+    element.addEventListener("click", handler);
+    // element removed but listener still exists ❗
+
+
+  -- closure => it is function that remember variable from its outer scope even after that outer function has finished execution
+   -Closures keep memory because the inner function still needs those variables.
