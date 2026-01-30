@@ -8,7 +8,7 @@
 >object oriented 
 >functional
 - prototype based object oriented=> object inherits directly from object using prototypes
--first class function => function are treated like a variable 
+-first class function => function are treated like a variableegi
 >can be stored in variable
 > passed as argument
 > returned from function
