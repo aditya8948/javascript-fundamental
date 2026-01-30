@@ -10,14 +10,14 @@
 - prototype based object oriented=> object inherits directly from object using prototypes
 -first class function => function are treated like a variable 
 >can be stored in variable
-> pssed as arguument
-> returned from functioin
+> passed as argument
+> returned from function
 -dynamically type=> no need to declare data type 
--single threaded => js executes one task ata atime on a sigle call stack
+-single threaded => js executes one task at a time on a sigle call stack
 -non blocking => long tasks(API calls  timer, I/O) dont block the execution
 
 
-
+-----------------------------------------------------------------------------------------------------------------------------------
 
 !!! How a JavaScript Engine Works 
 A JS engine is a program that reads, understands, and executes JavaScript code.
@@ -32,7 +32,7 @@ Execution
 ↓
 Garbage Collection (running in background)
 
-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 1- parsing (reading your code)=>
     >js engine read your code 
@@ -85,7 +85,7 @@ JS engine parses code → compiles it using JIT → executes it in a single-thre
 
 
 
- ----------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------------------------------------------------------
 
 !! Execution context 
         it is the environment where javaScript code runs,
@@ -97,24 +97,24 @@ JS engine parses code → compiles it using JIT → executes it in a single-thre
     
     > Types of execution context  
 
-    1> global execution context  => 
+    1- global execution context  => 
         Created once when JS starts
         it contains : 
                     this (in browser -> window )
                     global variable 
                     global function
     
-    2> function execution context =>
+    2- function execution context =>
         created everytime when a function is call
         everytime a function is call js creats a new execution context for that call
         once a function is finised its execution context is destroyed
 
 
--inside executionn context 
- > each execution context has two phase 
- Phase 1: Creation Phase (Memory Creation)
-        jS scans the code before executing.
-        What happens:
+    -inside executionn context 
+      > each execution context has two phase 
+         Phase 1: Creation Phase (Memory Creation)
+          jS scans the code before executing.
+            What happens:
             Variables → undefined
             Functions → whole function stored
             this is decided
@@ -176,7 +176,7 @@ one line => Execution context is the environment where JS code is evaluated,
 
 scoping => how our program variable are organized and accessed , where do variables live? 
 lexical scoping => scoping is controlled by placement of function and block in the code 
-scope => space or environment in which a certain variabke is declared 
+scope => space or environment in which a certain variable is declared 
 there is global , fuction and block scope 
 scope in varibale => region of our code where a cetain variable can be accessed 
 
@@ -220,7 +220,7 @@ block scope : varibale are accesssible only inside block
 !Hoisting 
 js moves declaration to the top of the scope during the creation phase 
 - memory is allocated before execution 
-- it is javascript behaviour of allocating memory for declaration v=before code execution
+- it is javascript behaviour of allocating memory for declaration before code execution
 
 what js sees during creation phase ?
  - var => it is hoisted and initialized as undefined 
@@ -264,7 +264,7 @@ o/p => ReferenceError: Cannot access 'b' before initialization
 
 ------------------------------------------------------------------------------
 !THIS KEYWORD => THIS refer to the object that call the function and ots value is determined at runtime
-    - THIS  is a reference to the object  that is executing the current function , but THIS  is not decided wherea  funtoion is written , it decided how thwe funtion is called 
+    - THIS  is a reference to the object  that is executing the current function , but THIS  is not decided where funtoion is written , it decided how thwe funtion is called 
     - arrow function dont bind THIS , regular funtion do
     - THIS refer to the object that call the funtion and its value is determined at runtime 
 
@@ -359,7 +359,7 @@ Function
 
 shallow copy and deep  copy 
 
-Shallow copy => new object , but nested object are still shared (onyl the first  leve;  is copied )
+Shallow copy => new object , but nested object are still shared (onyl the first  leave;  is copied )
 
 example => 
 
@@ -386,7 +386,7 @@ Array.slice()
 Array.from()
 
 
- - Deep copy = > completly new objecct , including neste object (no shared reference )
+ - Deep copy = > completly new objecct , including nested object (no shared reference )
   example => 
     const user2 = JSON.parse(JSON.stringify(user1));
 user2.address.city = "Mumbai";
@@ -407,7 +407,7 @@ circular refs
 
 
 --------------------------------------------------------------------------------------------------------------------------
- Garbage collection => it is how js automatically freees memory that is no longger needed . we  dont delete it manually js automatically delete it 
+ Garbage collection => it is how js automatically freees memory that is no longer needed . we  dont delete it manually js automatically delete it 
  - gc fress heap memory not stack memory - it freed automatically when function execution end or functionn executiion is popped 
 
 
@@ -419,7 +419,7 @@ circular refs
   2- sweep everything unnmarked 
 
   - real world memory leak => GC is  automatic but  bad code can prevent gc
-   - when object  are no longer needed arre incorrectly still reachable and therefore not being garbage collected 
+   - when object  are no longer needed are incorrectly still reachable and therefore not being garbage collected 
 
   - forgotten references 
   - global variable (global stays reachable forever )
